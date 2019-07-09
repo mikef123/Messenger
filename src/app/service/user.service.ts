@@ -10,6 +10,7 @@ export class UserService {
     let usuario1: User = {
       nick: 'Eduardo',
       age: 24,
+      status: "add",
       email: 'ed@aoe.aoe',
       friend: true,
       uid: 1
@@ -17,6 +18,7 @@ export class UserService {
     let usuario2: User = {
       nick: 'Freddy',
       age: 28,
+      status: "online",
       email: 'fred@aoe.aoe',
       friend: true,
       uid: 2
@@ -24,6 +26,7 @@ export class UserService {
     let usuario3: User = {
       nick: 'Yuliana',
       age: 18,
+      status: "busy",
       email: 'yuli@aoe.aoe',
       friend: true,
       uid: 3
@@ -31,6 +34,7 @@ export class UserService {
     let usuario4: User = {
       nick: 'Ricardo',
       age: 17,
+      status: "away",
       email: 'rick@aoe.aoe',
       friend: false,
       uid: 4
@@ -38,6 +42,7 @@ export class UserService {
     let usuario5: User = {
       nick: 'Marcos',
       age: 30,
+      status: "away",
       email:'marcos@aoe.aoe',
       friend: false,
       uid: 5
