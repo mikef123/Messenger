@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DialogService, DialogComponent } from 'ng2-bootstrap-modal';
 import { UserService } from 'src/app/service/user.service';
 import { RequestService } from 'src/app/services/request.service';
+import { User } from 'src/app/interfaces/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export interface PromptModel {
   scope: any;
@@ -17,10 +19,24 @@ export class RequestComponent extends DialogComponent<PromptModel, any> implemen
     scope: any;
     shouldAdd: string = 'yes';
     currentRequest: any;
+    userSend: User;
   
-  constructor(private dialogService: DialogService, private userService:UserService, private requestService: RequestService) { 
+  constructor(public dialogService: DialogService, private userService:UserService, 
+    private requestService: RequestService, private authenticacionService: AuthenticationService) { 
     super(dialogService)
+
+    this.authenticacionService.getStatus().subscribe( (status) => {
+      this.userService.getUserById(status.uid).valueChanges().subscribe( (data:User) => {
+        this.userSend = data;
+        console.log(this.userSend);
+      },(error) => {
+        console.log(error);
+      });
+    },(error) => {
+      console.log(error);
+    });
   }
+  
   accept() {
     if(this.shouldAdd == 'yes') {
       this.requestService.setRequestStatus(this.currentRequest, 'accepted')

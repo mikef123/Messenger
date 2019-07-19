@@ -33,13 +33,11 @@
         </div>
         <br>
         <hr>
-        <b *ngIf="friends">Amigos ({{friends.length}} / {{friends.length}})</b>
-        <div *ngFor="let user of friends | search: query; let i = index" class="disblo marbo5">
-            <span routerLink="/conversation/{{user.uid}}">
-                <img class="icon" src="../assets/img/logo_live_online.png">
-                <b>{{user.nick}}</b> - {{user.subnick || 'No subnick'}}
-                <small>{{user.email}}</small>
-            </span>
+        <b *ngIf="user && user.friends">Amigos ({{user.friends.length}} / {{user.friends.length}})</b>
+        <div *ngIf="user && user.friends">
+            <div class="disblo marbo5">
+                <app-contact class="col-md-12" *ngFor="let user of user.friends" [uid]="user"></app-contact>
+            </div>
         </div>
     </div>
 </div>
@@ -53,7 +51,8 @@
     </div>
     <div class="modal-body">
         <b>Ingresa el email de tu amigo</b>
-        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail" (keyup.enter)="sendRequest()">
+        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="friendEmail"
+            (keyup.enter)="sendRequest()">
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="sendRequest()">Guardar</button>
