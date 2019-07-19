@@ -53,11 +53,11 @@ export class HomeComponent implements OnInit {
   }
   sendRequest() {
     const request = {
-      timestamp:Date.now,
+      timestamp:Date.now(),
       receiver_email: this.friendEmail,
       sender: this.user.uid,
       status: 'pending'
-    }
+    };
     this.requestService.createRequest(request).then(()=>{
       alert('Solicitud enviada');
     }).catch((error)=> {
