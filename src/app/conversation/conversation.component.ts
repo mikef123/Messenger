@@ -63,7 +63,7 @@ export class ConversationComponent implements OnInit {
     const message = {
       uid: this.conversation_id,
       timestamp: Date.now(),
-      text: null,
+      text: 'Has enviado un zumbido',
       sender: this.user.uid,
       receiver: this.friend.uid,
       type: 'zumbido'

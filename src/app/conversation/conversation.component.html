@@ -22,7 +22,9 @@
             <div class="vh55 overscroll pabo10" id="messageArea">
                 <div class="messageGroup" *ngFor="let message of conversation">
                     <b>{{getUserNickById(message.sender)}}</b> dice: <br>
-                    <!-- <span>{{message.text}}</span> -->
+                    <div *ngIf="message.type =='text' || message.type =='zumbido'">
+                        <span>{{message.text}}</span>
+                    </div>
                     <img *ngIf="message.type =='img'" src="{{message.text}}" class="AvatarImage img-fluid">
                 </div>
             </div>
